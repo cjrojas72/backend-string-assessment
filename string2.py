@@ -23,8 +23,12 @@ Kenzie Assignment: String2
 
 
 def verbing(s):
-    # your code here
-    return
+    if 'ing' in s:
+        s += 'ly'
+    else:
+        if len(s) >= 3:
+            s += 'ing'
+    return s
 
 
 # E. not_bad
@@ -37,7 +41,17 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
     # your code here
-    return
+    if 'not' in s and 'bad' in s:
+        n = s.index('not')
+        b = s.index('bad')
+
+        end = s.index('bad') + 3
+
+        target = s[n:end]
+    
+        if n < b:
+            s = s.replace(target, 'good')
+    return s
 
 
 # F. front_back
@@ -49,8 +63,12 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
     # your code here
-    return
-
+    a1 = a[:((len(a)//2)+(len(a) % 2))]
+    b1 = b[:((len(b)//2)+(len(b) % 2))]
+    a2 = a[((len(a)//2)+(len(a) % 2)):]
+    b2 = b[((len(b)//2)+(len(b) % 2)):]
+    
+    return a1 + b1 + a2 + b2
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.

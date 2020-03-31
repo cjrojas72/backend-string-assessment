@@ -26,8 +26,11 @@ Kenzie assignment: String1
 
 
 def donuts(count):
-    # your code here
-    return
+
+    if count < 10:
+        return 'Number of donuts: {}'.format(count)
+    else:
+        return 'Number of donuts: many'
 
 
 # B. both_ends
@@ -37,7 +40,10 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     # your code here
-    return
+    if len(s) < 2:
+        return ''
+    else:
+        return s[:2] + s[-2:]
 
 
 # C. fix_start
@@ -51,7 +57,17 @@ def both_ends(s):
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
     # your code here
-    return
+    first_char = s[0]
+    new_string = first_char
+
+    for i,c in enumerate(s):
+        if i > 0:
+            if c == first_char:
+                new_string += '*'
+            else:
+                new_string += c
+
+    return new_string
 
 
 # D. MixUp
@@ -63,7 +79,16 @@ def fix_start(s):
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
     # your code here
-    return
+    aa = a
+    bb = b
+
+    aa = aa.replace(aa[0], b[0])
+    aa = aa.replace(aa[1], b[1])
+
+    bb = bb.replace(bb[0], a[0])
+    bb = bb.replace(bb[1], a[1])
+
+    return aa + " " + bb
 
 
 # Provided simple test() function used in main() to print
@@ -73,7 +98,8 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('{} got: {}    expected: {}'.format(prefix, repr(got), repr(expected)))
+    print('{} got: {}    expected: {}'.format(
+        prefix, repr(got), repr(expected)))
 
 
 # The main() func calls the above functions with interesting inputs,
